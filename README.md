@@ -26,13 +26,23 @@ $ dune exec corpus/generate.exe -- crowbar --multi 1000000 --seed 0
 
 ## Isomorphism
 
-We don't compare strictly generated email and encoded/decoded email but we
-assume that they should have the same structure (e.g. `multipart`), headers
-should be the same (`Content-Type`, `Content-Transfer-Encoding` or `Date`)
-and contents should be the same.
+The equality we have defined between a generated email `m` and its and decoded
+counterpart `m'` is not strictly exact. What is actually check is:
 
-By this way, semantically, Mr. MIME does not alterate your email and what you
-parsed is what you can read.
+- _structural equality_: both emails must have the same structure. For example,
+if `m` is a multipart email with 3 parts, `m'` is also a multipart mail with 3
+parts, and the equality is recursivly called on each of the parts;
+
+- _partial header equality_: the headers present are the same and in order but
+equality between the values is only checked for the headers for which values are
+completely parsed by `mrmime` (like `Content-Type`, `Content-Transfer-Encoding`
+or `Date`). Note a small exception for `Content-type` header: `boundary`
+parameter can change between `m` and  `m'`;
+
+- _content equality_.
+
+By this way, semantically, Mr. MIME does not alterate any important
+part of your email and what you parsed is what you can read.
 
 ## License
 
