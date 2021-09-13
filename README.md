@@ -48,5 +48,8 @@ part of your email and what you parsed is what you can read.
 
 The corpus is under the CC0 license.
 
+`hamlet` has received funding from the Next Generation Internet Initiative (NGI)
+within the framework of the DAPSI Project.
+
 [mrmime]: https://github.com/mirage/mrmime
 [enron]: https://www.cs.cmu.edu/~enron/
