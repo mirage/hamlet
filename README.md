@@ -1,6 +1,6 @@
 # Hamlet, an email corpus
 
-This repository contains randomly generated emails according to our
+This repository contains **randomly** generated emails according to our
 [`mrmime`][mrmime] tool. Mr. MIME is a library to parse & encode an email. So
 we developped a tool to randomly generate an email and ensure a kind of
 isormophism such as:
@@ -12,6 +12,20 @@ $ test x = decode (encode (x))
 This corpus contains **valid** emails and Mr. MIME does not alterate them when
 it parses or encodes them. Our MUA should do the same! As the
 [Enron's corpus][enron], Hamlet wants to improve the email stack.
+
+## Contents of emails
+
+Due to the random generation, emails are **not** human-readable but still they
+are valids. An email client should be able to process it and transfer it -
+decode it / encode it - without alterations.
+
+The goal of this corpus is an alternative to the [Enron][] database without
+privacy concerns (because we generated these emails instead of collecting them).
+It permits us to test our email implementation and check its reliability with
+the standards (see [RFC5322][]).
+
+In our development process, this corpus is acts as an "oracle" to ensure some
+edge cases about the standards and a kind of "isomorphim".
 
 ## How to reproduce Hamlet
 
@@ -53,3 +67,4 @@ within the framework of the DAPSI Project.
 
 [mrmime]: https://github.com/mirage/mrmime
 [enron]: https://www.cs.cmu.edu/~enron/
+[RFC5322]: https://datatracker.ietf.org/doc/html/rfc5322
